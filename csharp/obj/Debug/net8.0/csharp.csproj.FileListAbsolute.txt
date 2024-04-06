@@ -1,0 +1,14 @@
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.AssemblyInfoInputs.cache
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.AssemblyInfo.cs
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.csproj.CoreCompileInputs.cache
+c:\Users\ttpha\source\repos\practice\csharp\bin\Debug\net8.0\csharp.exe
+c:\Users\ttpha\source\repos\practice\csharp\bin\Debug\net8.0\csharp.deps.json
+c:\Users\ttpha\source\repos\practice\csharp\bin\Debug\net8.0\csharp.runtimeconfig.json
+c:\Users\ttpha\source\repos\practice\csharp\bin\Debug\net8.0\csharp.dll
+c:\Users\ttpha\source\repos\practice\csharp\bin\Debug\net8.0\csharp.pdb
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.dll
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\refint\csharp.dll
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.pdb
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\csharp.genruntimeconfig.cache
+c:\Users\ttpha\source\repos\practice\csharp\obj\Debug\net8.0\ref\csharp.dll
