@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog as fd
 
 
-class BasicMenu(ttk.Frame):
+class AppMenu(ttk.Frame):
     def __init__(self, root):
         self.filename = ''
         
@@ -76,12 +76,17 @@ class BasicMenu(ttk.Frame):
         self.password = StringVar()
         password = ttk.Entry(mainframe, width=20, textvariable=self.password)
         password.grid(column=2, row=4, sticky=(W, E))
-                
+        
+        self.outputFile = StringVar()
+        outputfile = ttk.Entry(mainframe, width=20, textvariable=self.outputFile)
+        outputfile.grid(column=2, row=5, sticky=(W, E))
+                        
         self.meters = StringVar()
         ttk.Label(mainframe, text="Guest Spreadsheet URL or File Name:").grid(column=1, row=1, sticky=S)
         ttk.Label(mainframe, text="Sheet name:").grid(column=1, row=2, sticky=S)
         ttk.Label(mainframe, text="Username for URL:").grid(column=1, row=3, sticky=S)        
-        ttk.Label(mainframe, text="Password URL:").grid(column=1, row=4, sticky=S)        
+        ttk.Label(mainframe, text="Password URL:").grid(column=1, row=4, sticky=S)      
+        ttk.Label(mainframe, text="JSON Output File for Guest:").grid(column=1, row=5, sticky=S)      
         ttk.Button(mainframe, text="Update", command=self.update).grid(column=5, row=10, sticky=W)
 
         for child in mainframe.winfo_children(): 
@@ -89,6 +94,43 @@ class BasicMenu(ttk.Frame):
 
         fileName.focus()
         root.bind("<Return>", self.update)
+    
+        
+        # Drop down menu for listed users
+        OPTIONS = [
+        "Jan",
+        "Feb",
+        "Mar"
+        ] #etc
+        self.dropDownData = StringVar()
+        self.dropDownData.set(OPTIONS[0]) # default value
+
+
+        w = OptionMenu(mainframe, self.dropDownData, *OPTIONS)
+        w.grid(column=2, row=6, sticky=(W, E))
+  
+        button = Button(mainframe, text="OK", command=self.ok)
+        button.grid(column=3, row=6, sticky=(W, E))
+    
+    
+        # implementing scrollbar functionality 
+        scrollbar = Scrollbar(root) 
+        ttk.Scrollbar(mainframe).grid(column=4, row=15, sticky=E)
+        self.text_info = Text(mainframe, 
+                            yscrollcommand=scrollbar.set) 
+        self.text_info.grid(column=2, row=15, sticky='NESW')
+        scrollbar.config(command=self.text_info.yview_scroll) 
+      
+    def ok(self, *args):
+        print ("value is:" + self.dropDownData.get())
+        self.updateText()  
+       
+    def updateText(self, *args):
+        # value = self.filename.get()
+        value = self.dropDownData.get()
+        self.text_info.delete("1.0", "end")
+        self.text_info.insert(END, value)
+        self.text_info.after(1000, self.updateText)
         
     def update(self, *args,):
         try:
@@ -97,22 +139,11 @@ class BasicMenu(ttk.Frame):
             self.userName.set(value)
             self.password.set(value)
             self.sheetName.set(value)
+            self.outputFile.set(value)
+            self.updateText()
             
         except ValueError:
             pass
-
-    # import tkinter as tk
-    # from tkinter import filedialog as fd 
-
-    # def callback():
-    #     name= fd.askopenfilename() 
-    #     print(name)
-        
-    # errmsg = 'Error!'
-    # tk.Button(text='File Open', 
-    #     command=callback).pack(fill=tk.X)
-    # tk.mainloop()
-
     
     def select_file(self):
         filetypes = (
@@ -126,61 +157,11 @@ class BasicMenu(ttk.Frame):
 
         print(self.filename)
 
-        # showinfo(
-        #     title='Selected File',
-        #     message=filename
-        # )
-
-    
     
 if __name__ == "__main__":
-    # root = Tk()
-    # myApp = Calculator(root)    
-    # root.mainloop()
-    pass    
     root = Tk()
-    myApp = BasicMenu(root)
+    myApp = AppMenu(root)
     root.mainloop()    
 
 
 
-# import tkinter as tk
-# from tkinter import ttk
-# from tkinter import filedialog as fd
-# from tkinter.messagebox import showinfo
-
-# # create the root window
-# root = tk.Tk()
-# root.title('Tkinter Open File Dialog')
-# root.resizable(False, False)
-# root.geometry('300x150')
-
-
-# def select_file():
-#     filetypes = (
-#         ('Excel files', '*.xlsx'),
-#         ('All files', '*.*')
-#     )
-
-#     filename = fd.askopenfilename(
-#         title='Open a file',
-#         initialdir='/',
-#         filetypes=filetypes)
-
-#     showinfo(
-#         title='Selected File',
-#         message=filename
-#     )
-
-
-# # open button
-# open_button = ttk.Button(
-#     root,
-#     text='Open a File',
-#     command=select_file
-# )
-
-# open_button.pack(expand=True)
-
-# # run the application
-# root.mainloop()
