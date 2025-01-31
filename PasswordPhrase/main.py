@@ -106,7 +106,7 @@ def main():
     # result = myFile.RandomCharacters(count=12)
     
 
-    # result = myFile.PassWord(4, insertNumbers=True, insertSpecial=False, insertChars=False, insertUpper=False)
+    result = myFile.PassWord(2, insertNumbers=True, insertSpecial=True, insertChars=False, insertUpper=True)
     # print(result)
     
     # result = myFile.RandomCharacters(count=12)
@@ -121,6 +121,7 @@ def main():
 
 if __name__ == "__main__":
     
+
 
     main()
 
