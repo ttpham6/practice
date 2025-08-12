@@ -1,8 +1,12 @@
-import sys
-from time import time
-from math import pow, sqrt
 
+from sys import exit        # for main
+from math import pow, sqrt  # For main 
 
+from time import time       # For timeit
+# For profile_memory
+import functools
+import os
+import psutil
 
 
 def timeit(f):
@@ -13,11 +17,6 @@ def timeit(f):
         print ("func:%r args:[%r, %r] took: %2.4f sec" % (f.__name__, args, kw, te-ts))
         return result
     return timed
-
-import functools
-import os
-import psutil
-
 
 def profile_memory(func):
     @functools.wraps(func)
@@ -33,7 +32,7 @@ def profile_memory(func):
 
 @timeit
 @profile_memory
-def sieve_of_eratosthenes(n):
+def sieve_of_eratosthenes(n)->list:
     primes = []
     is_prime = [True] * (n + 1)
     is_prime[0:2] = [False, False]
@@ -46,7 +45,7 @@ def sieve_of_eratosthenes(n):
 
 @timeit
 @profile_memory
-def sieve_of_eratosthenes_sqrt(n):
+def sieve_of_eratosthenes_sqrt(n)->list:
     primes = []
     is_prime = [True] * (n + 1)
     is_prime[0:2] = [False, False]
@@ -65,7 +64,7 @@ def sieve_of_eratosthenes_sqrt(n):
 
 @timeit
 @profile_memory
-def sieve_of_eratosthenes_new(limit):
+def sieve_of_eratosthenes_new(limit)->list:
     """
     Generates all prime numbers up to a given limit using the Sieve of Eratosthenes.
     Returns a list of prime numbers.
@@ -90,7 +89,7 @@ def sieve_of_eratosthenes_new(limit):
 
 import random
 
-def _is_composite(n, a, d, s):
+def _is_composite(n, a, d, s)->bool:
     x = pow(a, d, n)
     if x == 1 or x == n - 1:
         return False
@@ -100,7 +99,7 @@ def _is_composite(n, a, d, s):
             return False
     return True
 
-def miller_rabin(n, k=5):  # k is the number of rounds for accuracy.
+def miller_rabin(n, k=5)->bool:  # k is the number of rounds for accuracy.
     """
     Performs the Miller-Rabin primality test.
     Returns True if n is probably prime, False if n is composite.
@@ -127,13 +126,11 @@ def main():
     power = 31
     n = int(pow(2, power) - 1) 
     print(n)
-    primes = sieve_of_eratosthenes(n)
+    primes = sieve_of_eratosthenes_new(n)
     print(f"The number of primes in 2^{power}={n} is {len(primes)}")
     print(primes[0])
-    # print(primes[10000])
     
 
-if __name__ == "__main__":
-    
-    sys.exit(main())
+if __name__ == "__main__":   
+    exit(main())
     

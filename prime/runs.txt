@@ -30,3 +30,11 @@ The number of primes in n=1073741823 is 54400028
 Function sieve_of_eratosthenes memory usage: 2081.4141 MB
 func:'sieve_of_eratosthenes' args:[(1073741823,), {}] took: 149.2437 sec
 The number of primes in n=1073741823 is 54400028
+
+
+
+# 2^31 = 2147483647
+Function sieve_of_eratosthenes memory usage: 4547.1016 MB
+func:'sieve_of_eratosthenes' args:[(2147483647,), {}] took: 553.2095 sec
+The number of primes in 2^31=2147483647 is 105097565
+
