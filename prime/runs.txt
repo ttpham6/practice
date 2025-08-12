@@ -1,0 +1,32 @@
+Runs on system 
+Laptop 17-cnx3xxx
+32 gb rams
+Core i7-1355U 17 
+Uses 95% of memory and 25-30% CU
+
+2^32 - 1 = 4294967295
+
+
+func:'sieve_of_eratosthenes' args:[(4294967295,), {}] took: 18683.7567 sec
+203,280,221
+
+5 hours 
+
+# 2^30 = 1073741823
+Seems to consume 30% CPU 
+
+54400028 primes
+
+Function sieve_of_eratosthenes_new memory usage: 2081.3711 MB
+func:'sieve_of_eratosthenes_new' args:[(1073741823,), {}] took: 112.3318 sec
+The number of primes in n=1073741823 is 54400028
+
+
+Function sieve_of_eratosthenes_sqrt memory usage: 2081.4336 MB
+func:'sieve_of_eratosthenes_sqrt' args:[(1073741823,), {}] took: 110.2506 sec
+The number of primes in n=1073741823 is 54400028
+
+1073741823
+Function sieve_of_eratosthenes memory usage: 2081.4141 MB
+func:'sieve_of_eratosthenes' args:[(1073741823,), {}] took: 149.2437 sec
+The number of primes in n=1073741823 is 54400028
