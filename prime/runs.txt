@@ -12,22 +12,6 @@ func:'sieve_of_eratosthenes' args:[(4294967295,), {}] took: 18683.7567 sec
     Seems to consume 30% CPU 
     Uses 95% of memory 
 
-# 2^30 = 1073741823
-Function sieve_of_eratosthenes memory usage: 2081.4141 MB
-func:'sieve_of_eratosthenes' args:[(1073741823,), {}] took: 149.2437 sec
-The number of primes in n=1073741823 is 54400028
-
-Function sieve_of_eratosthenes_sqrt memory usage: 2081.4336 MB
-func:'sieve_of_eratosthenes_sqrt' args:[(1073741823,), {}] took: 110.2506 sec
-The number of primes in n=1073741823 is 54400028
-
-Function sieve_of_eratosthenes_new memory usage: 2081.3711 MB
-func:'sieve_of_eratosthenes_new' args:[(1073741823,), {}] took: 112.3318 sec
-The number of primes in n=1073741823 is 54400028
-
-Function sieveOfAtkin memory usage: 2082.9531 MB
-Function sieveOfAtkin took 342.6757 seconds
-The number of primes in 2^30=1073741823 is 54400028
 
 # 2^31 = 2147483647
 Function sieve_of_eratosthenes memory usage: 4547.1016 MB
@@ -45,6 +29,24 @@ The number of primes in 2^31=2147483647 is 105097565
 Function sieveOfAtkin memory usage: 2766.6016 MB
 Function sieveOfAtkin took 825.4922 seconds
 The number of primes in 2^31=2147483647 is 105097565
+
+# 2^30 = 1073741823
+Function sieve_of_eratosthenes memory usage: 2081.4141 MB
+func:'sieve_of_eratosthenes' args:[(1073741823,), {}] took: 149.2437 sec
+The number of primes in n=1073741823 is 54400028
+
+Function sieve_of_eratosthenes_sqrt memory usage: 2081.4336 MB
+func:'sieve_of_eratosthenes_sqrt' args:[(1073741823,), {}] took: 110.2506 sec
+The number of primes in n=1073741823 is 54400028
+
+Function sieve_of_eratosthenes_new memory usage: 2081.3711 MB
+func:'sieve_of_eratosthenes_new' args:[(1073741823,), {}] took: 112.3318 sec
+The number of primes in n=1073741823 is 54400028
+
+Function sieveOfAtkin memory usage: 2082.9531 MB
+Function sieveOfAtkin took 342.6757 seconds
+The number of primes in 2^30=1073741823 is 54400028
+
 
 # 2^24
 Function sieve_of_eratosthenes memory usage: 42.9492 MB
@@ -77,8 +79,8 @@ Function sieve_of_eratosthenes_new memory usage: 0.0273 MB
 Function sieve_of_eratosthenes_new took 0.0060 seconds
 The number of primes in 2^16=65535 is 6542
 
-Function trialDivision memory usage: 0.3594 MB
-Function trialDivision took 0.0660 seconds
+Function trialDivision memory usage: 0.2422 MB
+Function trialDivision took 0.0551 seconds
 The number of primes in 2^16=65535 is 6542
 
 Function sieveOfAtkin memory usage: 0.9648 MB

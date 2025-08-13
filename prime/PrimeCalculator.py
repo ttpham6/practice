@@ -88,8 +88,6 @@ def sieve_of_eratosthenes_sqrt(n)->list:
     return result
 
 
-
-
 @timeit
 @profile_memory
 def trialDivision(limit):
@@ -155,15 +153,16 @@ def miller_rabin(n, k=5)->bool:  # k is the number of rounds for accuracy.
 @profile_memory
 def sieveOfAtkin(limit):
     """Generates all prime numbers up to a given limit using the Sieve of Atkin.
+    https://www.geeksforgeeks.org/dsa/sieve-of-atkin/
+
 
     Args:
         limit (int): The upper limit (inclusive) for generating prime numbers.
 
     Returns:
         list: A list of all prime numbers up to the specified limit.
-    """    
-    # https://www.geeksforgeeks.org/dsa/sieve-of-atkin/
-    # is_prime = [0] * (limit + 1)
+    """
+    # intialise the is_prime array with initial 0 values
     is_prime = [0] * (limit + 1)
 
     # mark 2 and 3 as prime
@@ -175,7 +174,6 @@ def sieveOfAtkin(limit):
     # check for all three conditions
     for x in range(1, int(limit**0.5) + 1):
         for y in range(1, int(limit**0.5) + 1):
-    
             # condition 1
             n = (4 * x * x) + (y * y)
             if n <= limit and (n % 12 == 1 or n % 12 == 5):
@@ -185,7 +183,7 @@ def sieveOfAtkin(limit):
             n = (3 * x * x) + (y * y)
             if n <= limit and n % 12 == 7:
                 is_prime[n] = (is_prime[n] + 1) % 2
-    
+                
             # condition 3
             n = (3 * x * x) - (y * y)
             if x > y and n <= limit and n % 12 == 11:
@@ -234,7 +232,7 @@ def sieveOfAtkinWithBug(limit):
             xx=x*x
             yy=y*y
             xx3 = 3*xx
-            xx3yy = xx3 + yy            
+            xx3yy = xx3 + yy
             n = xx3yy + xx
             if n<=limit and (n%12==1 or n%12==5) : sieve[n] = not sieve[n]
             n = xx3yy
@@ -251,43 +249,25 @@ def sieveOfAtkinWithBug(limit):
     return P
 
 
-
-
-
-
 def main():
     """Main function to execute the Miller-Rabin primality test.
     """
-    power = 25
+    power = 16
     n = int(pow(2, power) - 1)
- 
-    # sieve_of_eratosthenes_prime = sieve_of_eratosthenes(n)
-    # print(f"The number of primes in 2^{power}={n} is {len(sieve_of_eratosthenes_prime)}\n")
-        
-    # sieve_of_eratosthenes_sqrt_prime = sieve_of_eratosthenes_sqrt(n)
-    # print(f"The number of primes in 2^{power}={n} is {len(sieve_of_eratosthenes_sqrt_prime)}\n")
-    
-    # print(sieve_of_eratosthenes_prime)
-    # print(sieve_of_eratosthenes_sqrt_prime)
-    
-    # if sieve_of_eratosthenes_sqrt_prime == sieve_of_eratosthenes_prime:
+
+    # sieve_of_atkin_primes = sieveOfAtkin(n)
+    # print(f"The number of primes in 2^{power}={n} is {len(sieve_of_atkin_primes)}\n")
+
+    # sieve_of_atkin_primes_with_bug = sieveOfAtkinWithBug(n)
+    # print(f"The number of primes in 2^{power}={n} is {len(sieve_of_atkin_primes_with_bug)}\n")
+
+    # if sieve_of_atkin_primes == sieve_of_atkin_primes_with_bug:
     #     print("Both methods yield the same primes.")
     # else:
     #     print("The methods yield different primes.")
 
-    # trial_division_primes = trialDivision(n)
-    # print(f"The number of primes in 2^{power}={n} is {len(trial_division_primes)}\n")
-
-    sieve_of_atkin_primes = sieveOfAtkin(n)
-    print(f"The number of primes in 2^{power}={n} is {len(sieve_of_atkin_primes)}\n")
-
-    sieve_of_atkin_primes_with_bug = sieveOfAtkinWithBug(n)
-    print(f"The number of primes in 2^{power}={n} is {len(sieve_of_atkin_primes_with_bug)}\n")
-
-    if sieve_of_atkin_primes == sieve_of_atkin_primes_with_bug:
-        print("Both methods yield the same primes.")
-    else:
-        print("The methods yield different primes.")
+    trial_division_primes = trialDivision(n)
+    print(f"The number of primes in 2^{power}={n} is {len(trial_division_primes)}\n")
 
 
 if __name__ == "__main__":
